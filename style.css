@@ -1,0 +1,223 @@
+*, html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: var(--body-font);
+    color: rgb(var(--primary-txt-color));
+}
+
+:root {
+    /* Colors */
+    --primary-bg-color: 0, 0, 0;
+    --secondary-bg-color: 255, 165, 0;
+    --base-container-color: 0, 0, 0;
+    --primary-txt-color: 255, 255, 255;
+    --pale-txt-color: 128, 128, 128;
+    --true-color: 255, 165, 0;
+    --false-color: 255, 0, 0; 
+
+    /* Fonts */
+    --body-font: 'Inconsolata', monospace;
+    --heading-font: 'Special Elite', system-ui;
+}
+
+a {
+    text-decoration: none;
+    text-shadow: 0 0 20px rgb(var(--primary-txt-color));
+    transition: all ease .5s;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 30px rgb(var(--primary-txt-color));
+}
+
+li {
+    list-style-type: none;
+}
+
+.container1 {
+    width: 100%;
+    min-width: 400px;
+    height: fit-content;
+    margin: 0 auto;
+    background: radial-gradient(circle, rgb(var(--secondary-bg-color), .05) 50%, transparent 0%) repeat, rgb(var(--base-container-color));
+    background-size: 10px 10px;
+    text-align: justify;
+}
+
+.container2 {
+    width: 90%;
+    height: fit-content;
+    min-height: 100vh;
+    margin: 0 auto;
+    margin-top: 1em;
+    padding: 1em;
+    background: radial-gradient(circle, rgb(var(--primary-txt-color), .01) 50%, transparent 0%) repeat, rgb(var(--primary-bg-color));
+    background-size: 10px 10px;
+    border-radius: 25px;
+    box-shadow: 0 0 100px 0 rgb(var(--primary-txt-color), .1);
+    font-size: 1.2em;
+}
+
+header {
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+    width: 90%;
+    top: .5em;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: rgb(var(--primary-bg-color));
+    box-shadow: 0 0 500px 0 rgb(var(--primary-txt-color), .2);
+    border-radius: 25px;
+    transition: all ease .5s;
+    z-index: 2;
+}
+
+nav ul {
+    display: flex;
+}
+
+nav li {
+    padding: 1.8em;
+}
+
+footer {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 1em;
+    padding: 1em;
+    background-color: rgb(var(--primary-bg-color));
+    box-shadow: 0 0 500px 2em rgb(var(--primary-bg-color));
+    border-radius: 25px 25px 0 0;
+    text-align: center;
+}
+
+footer .icon {
+    justify-content: center;
+    font-size: .5em;
+}
+
+footer .icon-img {
+    width: 3em;
+}
+
+.footer-directions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin: 1em;
+    justify-content: center;
+}
+
+.footer-directions a {
+    color: rgb(var(--pale-txt-color));
+    text-shadow: none;
+}
+
+.icon {
+    display: flex;
+    gap: 1em;
+    padding: 1em;
+    cursor: pointer;
+}
+
+.icon-text {
+    font-family: var(--heading-font);
+    margin-top: 8px;
+}
+
+.icon-img {
+    width: 40px;
+}
+
+.page-title {
+    margin: 0 auto;
+    margin-bottom: 1em;
+    padding: .2em 2em;
+    width: fit-content;
+    border-bottom: 2px solid rgb(var(--secondary-bg-color));
+    border-image: linear-gradient(to right, transparent, rgb(var(--secondary-bg-color)), transparent);
+    border-image-slice: 1;
+    font-family: var(--heading-font);
+    font-style: italic;
+    text-align: center;
+}
+
+.page-title::before {
+    content: "# ";
+    opacity: .5;
+}
+
+#toggleButton {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin-right: 8em;
+    margin-bottom: 3em;
+    height: fit-content;
+    width: 50px;
+    background-color: rgb(var(--primary-bg-color));
+    box-shadow: 0 0 1em 1px rgb(var(--secondary-bg-color), .5);
+    border: 2px solid rgb(var(--true-color));
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all ease .5s;
+}
+
+#toggleButton:active {
+    width: 80px;
+    background-color: rgb(var(--false-color));
+    box-shadow: none;
+    border: 2px solid rgb(var(--false-color));
+    border-radius: 15px;
+}
+
+#toggleButton.paused {
+    border: 2px solid rgb(var(--false-color));
+    box-shadow: none;
+}
+
+#toggleButton:active.paused {
+    background-color: rgb(var(--secondary-bg-color));
+    box-shadow: 0 0 1em 1px rgb(var(--secondary-bg-color), .5);
+    border: 2px solid rgb(var(--true-color));
+}
+
+.d1-img {
+    width: 400px;
+    float: right;
+}
+
+@media only screen and (max-width: 700px) {
+    header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      top: 0;
+      border-radius: 0;
+    }
+
+    footer {
+        width: 100%;
+        border-radius: 0;
+    }
+    
+    .container1 {
+        padding-bottom: 0;
+    }
+
+    .container2 {
+        width: 100%;
+        margin-top: 0;
+        border-radius: 0; 
+    }
+
+    #toggleButton, #toggleButton.paused {
+        margin: 2em;
+    }
+}
